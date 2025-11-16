@@ -143,10 +143,3 @@ Rules applied:
 MIT
 
 ---
-
-If you want, I can also generate:
-
-- A pub.dev-ready README
-- Example project
-- Unit tests for the generator
-  Just tell me.
