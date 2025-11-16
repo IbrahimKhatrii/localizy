@@ -1,6 +1,6 @@
 name: localizy
 description: A Flutter localization package that generates type-safe localization from JSON files
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/IbrahimKhatrii/localizy
 
 environment:

@@ -98,12 +98,8 @@ String _getStringsClassContent(List<String> locales, Map<String, String> data) {
   String localeMapEntries = '';
 
   for (final locale in locales) {
-    localeMethods += '''
-  static Map<String, String> _$locale() {
-    return {${_generateKeyValuePairs(data)}};
-  }
-
-''';
+    localeMethods +=
+        '''static Map<String, String> _$locale() => {${_generateKeyValuePairs(data)}};''';
     localeMapEntries += "      '$locale': _$locale(),\n";
   }
 
@@ -120,14 +116,11 @@ class Strings {
 ${_generateGetterMethods(data)}
 
   $localeMethods
-  static Map<String, Map<String, String>> _stuff() {
-    return {
-$localeMapEntries    };
-  }
+  static Map<String, Map<String, String>> _stuff() => {$localeMapEntries};
 
-  static String? _getValue(String s) {
-    if (_locale == null) return null;
-    return _stuff()[_locale]?[s];
+  static String _getValue(String s) {
+    if (_locale == null) return '';
+    return _stuff()[_locale]?[s] ?? '';
   }
 }
 ''';
@@ -145,12 +138,27 @@ String _generateGetterMethods(Map<String, String> data) {
   List<String> getters = [];
   data.forEach((key, value) {
     getters.add('''
-  static String? get $key {
-    return _getValue('$key');
-  }
+  static String get ${toCamelCase(key)} => _getValue('$key');
 ''');
   });
   return getters.join('\n');
+}
+
+String toCamelCase(String input) {
+  if (input.trim().isEmpty) return "";
+
+  final parts = input
+      .split(RegExp(r'[_\s-]+')) // underscores, spaces, hyphens — sab handle
+      .where((p) => p.isNotEmpty)
+      .toList();
+
+  final first = parts.first.toLowerCase();
+  final rest = parts
+      .skip(1)
+      .map((p) => p[0].toUpperCase() + p.substring(1).toLowerCase())
+      .join();
+
+  return first + rest;
 }
 
 String normalizeKey(String key) {
