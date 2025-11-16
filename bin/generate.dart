@@ -242,7 +242,7 @@ String _generateGetterMethods(
     List<String> localeLines = [];
     localeData.forEach((locale, localeMap) {
       if (localeMap.containsKey(key)) {
-        localeLines.add("  /// $locale: ${localeMap[key]}");
+        localeLines.add("  /// - `$locale` ${localeMap[key]}");
       }
     });
 
