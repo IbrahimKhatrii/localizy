@@ -55,13 +55,13 @@ tool/localizy.dart
 Default paths:
 
 ```
-dart run tool/localizy.dart
+dart run localizy:generate
 ```
 
 Custom input/output paths:
 
 ```
-dart run tool/localizy.dart assets/translations lib/gen
+dart run localizy:generate assets/localizy lib/localizy
 ```
 
 ---
