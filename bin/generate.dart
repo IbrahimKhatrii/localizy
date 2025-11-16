@@ -248,7 +248,7 @@ String _generateGetterMethods(
 
     /// Generate a getter method using camelCase version of the key with locale values in documentation
     if (localeLines.isNotEmpty) {
-      getters.add('''${localeLines.join(',\n')}
+      getters.add('''${localeLines.join('\n  ///\n')}
   static String get ${toCamelCase(key)} => _getValue('$key');
 ''');
     } else {

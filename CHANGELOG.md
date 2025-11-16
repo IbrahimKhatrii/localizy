@@ -1,6 +1,6 @@
-version (1.0.3)
+version (1.0.4)
 
 # Changes
 
-- added strings.dart
+- edited strings.dart
 - bug fixed
