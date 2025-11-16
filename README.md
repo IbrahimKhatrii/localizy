@@ -23,7 +23,6 @@ assets/localizy/
     hi.json
 lib/localization/
     strings.dart   ← generated output
-tool/localizy.dart
 ```
 
 ---
