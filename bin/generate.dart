@@ -171,7 +171,7 @@ String _getStringsClassContent(List<String> locales, Map<String, String> data,
   for (final locale in locales) {
     /// Add a method that returns the key-value map for this locale
     localeMethods +=
-        '''static Map<String, String> _$locale() => {${_generateKeyValuePairs(data)}};
+        '''static Map<String, String> _$locale() => {${_generateKeyValuePairs(localeData[locale]!)}};
   ''';
 
     /// Add an entry to the main locale map
@@ -213,14 +213,14 @@ ${_generateGetterMethods(data, localeData)}
 /// Generates key-value pairs in Dart map format for the localization data
 /// [data] - Map containing localization key-value pairs
 /// Returns a string representation of the key-value pairs for Dart code
-String _generateKeyValuePairs(Map<String, String> data) {
+String _generateKeyValuePairs(Map<String, String?> data) {
   /// List to store individual key-value pair strings
   List<String> pairs = [];
 
   /// Process each key-value pair in the data map
   data.forEach((key, value) {
     /// Add the key-value pair to the list, escaping single quotes in the value
-    pairs.add("'${key}': '${value.replaceAll("'", "\\'")}'");
+    pairs.add("'${key}': '${value!.replaceAll("'", "\\'")}'");
   });
 
   /// Join all pairs with commas
