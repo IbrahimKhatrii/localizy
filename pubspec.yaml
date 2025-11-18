@@ -1,6 +1,6 @@
 name: localizy
 description: A simple Dart-based localization generator that converts your JSON locale files into a strongly-typed strings.dart file with camelCase getters and safe normalized keys.
-version: 1.0.72
+version: 1.0.73
 homepage: https://github.com/IbrahimKhatrii/localizy
 
 environment:
