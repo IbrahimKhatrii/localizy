@@ -57,8 +57,10 @@ Future<void> generate(String localizationDir, String outputDir) async {
           .replaceAll('\\', '/')
           .split('/')
           .last
-          .toLowerCase()
+          // .toLowerCase()
           .replaceAll('.json', '');
+
+      print(locale);
 
       /// Add the locale to the list of locales
       locales.add(locale);
@@ -171,11 +173,11 @@ String _getStringsClassContent(List<String> locales, Map<String, String> data,
   for (final locale in locales) {
     /// Add a method that returns the key-value map for this locale
     localeMethods +=
-        '''static Map<String, String> _$locale() => {${_generateKeyValuePairs(localeData[locale]!)}};
+        '''static Map<String, String> _${normalizeKey(locale)}() => {${_generateKeyValuePairs(localeData[locale]!)}};
   ''';
 
     /// Add an entry to the main locale map
-    localeMapEntries += "'$locale': _$locale(),";
+    localeMapEntries += "'$locale': _${normalizeKey(locale)}(),";
   }
 
   /// Return the complete class definition with all generated content
