@@ -60,7 +60,7 @@ Future<void> generate(String localizationDir, String outputDir) async {
           // .toLowerCase()
           .replaceAll('.json', '');
 
-      print(locale);
+      // print(locale);
 
       /// Add the locale to the list of locales
       locales.add(locale);
